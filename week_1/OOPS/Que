@@ -1,0 +1,47 @@
+QUE- https://www.geeksforgeeks.org/problems/c-classes-introduction/1
+
+// CollegeCourse Class
+class CollegeCourse {
+    // your code here
+    public:
+        string CID;
+        char g;
+        int cr;
+        int gp;
+        float hp;
+        int grade;
+        void  set_CourseId(string CID ){
+            this->CID=CID;
+        }
+        void set_Grade(char g){
+            this->g=g;
+        }
+        void set_Credit(int cr){
+            this->cr=cr;
+        }
+        int calculateGradePoints(char g){
+            switch(g){
+                case 'A': case'a': grade= 10;
+                break;
+                case 'B': case'b': grade= 9;
+                break;
+                case 'C': case'c': grade= 8;
+                break;
+                case 'D': case'd': grade= 7;
+                break;
+                case 'E': case'e': grade= 6;
+                break;
+                case 'F': case'f': grade= 5;
+                break;
+            }
+            return grade;
+        }
+        float calculateHonorPoints(int gp,int cr){
+            hp=gp*cr;
+            return hp;
+        }
+        void display(){
+            cout<<grade<<" "<<hp<<endl;
+        }
+    
+};

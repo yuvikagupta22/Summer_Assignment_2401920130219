@@ -1,26 +1,26 @@
-QUE - https://leetcode.com/problems/invert-binary-tree/description/?envType=problem-list-v2&envId=tree
-
 /**
- * Definition for a binary tree node.
- * struct TreeNode {
+ * Definition for singly-linked list.
+ * struct ListNode {
  *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
 class Solution {
 public:
-    TreeNode* invertTree(TreeNode* root) {
-        if(root==NULL) return NULL;
-        TreeNode* temp=root->right;
-        root->right=root->left;
-        root->left=temp;
-
-        invertTree(root->left);
-        invertTree(root->right);
-        return root;        
+    ListNode* reverseList(ListNode* head) {
+        if(head==NULL||head->next==NULL) return head;
+        ListNode* prev=NULL;
+        ListNode*next=NULL;
+        ListNode* curr=head;
+        while(curr!=NULL){
+            next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+        }
+        return prev;
     }
 };

@@ -1,40 +1,18 @@
-QUE- https://leetcode.com/problems/intersection-of-two-linked-lists/description/
-
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
 class Solution {
 public:
-    int getLength(ListNode* head){
-        int count=0;
-        ListNode* temp=head;
-        while(temp!=NULL){
-            count++;
-            temp=temp->next;
+    vector<vector<int>> matrixReshape(vector<vector<int>>& mat, int r, int c) {
+        int n = mat.size(),m = mat[0].size();
+        if(n*m!=r*c) 
+            return mat;
+        int x = 0,y = 0;
+        vector<vector<int>> ans(r,vector<int>(c,0)); 
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                ans[i][j] = mat[x][y++];
+                if(y==m) 
+                    y%=m,x++;
+            }
         }
-        return count;
-    }
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        int lenA=getLength(headA);
-        int lenB= getLength(headB);
-        while(lenA>lenB){
-            lenA--;
-            headA=headA->next;
-        }
-        while(lenB>lenA){
-            lenB--;
-            headB=headB->next;
-
-        }
-        while(headA!=headB){
-            headA=headA->next;
-            headB=headB->next;
-        }
-        return headA;
+        return ans;
     }
 };

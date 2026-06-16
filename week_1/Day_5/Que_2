@@ -1,18 +1,11 @@
-QUE- https://leetcode.com/problems/find-the-difference/description/?envType=problem-list-v2&envId=string
-
 class Solution {
 public:
-    char findTheDifference(string s, string t) {
-        unordered_map<char,int>freq;
-        for(char ch:s){
-            freq[ch]++;
+    void reverseString(vector<char>& s) {
+        int start=0;
+        int end=s.size()-1;
+        while(start<end){
+            swap(s[start++],s[end--]);
         }
-        for(char ch:t){
-            if(freq[ch]==0){
-                return ch;
-            }
-            freq[ch]--;
-        }
-        return '\0';
+        
     }
 };

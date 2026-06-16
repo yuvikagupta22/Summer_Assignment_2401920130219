@@ -1,30 +1,16 @@
-QUE- https://leetcode.com/problems/linked-list-cycle/description/
-
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
 class Solution {
 public:
-    bool hasCycle(ListNode *head) {
-        if(head==NULL){
-            return false;
-        }
-        ListNode* slowPointer=head;
-        ListNode* fastPointer=head;
-        while(fastPointer!=NULL&&fastPointer->next!=NULL){
-            fastPointer=fastPointer->next->next;
-            slowPointer=slowPointer->next;
-            if(fastPointer==slowPointer){
-                return true;
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int i ,j;
+        int s=nums.size();
+        for(i=0;i<s;i++){
+            for(j=i+1;j<s;j++){
+                int c=nums[i]+nums[j];
+                if(c==target){
+                    return{i,j};
+                }
             }
         }
-        return false;
-
-
+        return{};
     }
 };

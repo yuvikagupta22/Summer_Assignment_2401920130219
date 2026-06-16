@@ -1,30 +1,24 @@
-QUE- https://leetcode.com/problems/merge-sorted-array/description/?envType=problem-list-v2&envId=sorting
-
-
 class Solution {
 public:
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-        vector<int>nums3;
-        int i=0;
-        int j=0;
-        while(i<m && j<n){
-            if(nums1[i]<=nums2[j]){
-                nums3.push_back(nums1[i]);
-                i++;
+    string longestCommonPrefix(vector<string>& strs) {
+        int n=strs.size();
+        string ans="";
+        for(int i=0;i<strs[0].length();i++){
+            char ch=strs[0][i];
+            bool match=true;
+            for(int j=1;j<n;j++){
+                if(strs[j].size()<i || ch!=strs[j][i]){
+                    match=false;
+                    break;
+                }
+            }
+            if(match==false){
+                break;
             }
             else{
-                nums3.push_back(nums2[j]);
-                j++;
+                ans.push_back(ch);
             }
         }
-        while(i<m){
-            nums3.push_back(nums1[i]);
-            i++;
-        }
-        while(j<n){
-            nums3.push_back(nums2[j]);
-            j++;
-        }
-        nums1=nums3;
+        return ans;
     }
 };

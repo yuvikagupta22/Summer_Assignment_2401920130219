@@ -1,30 +1,15 @@
-QUE- https://leetcode.com/problems/binary-tree-right-side-view/description/
-
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
-    void rightSide(TreeNode* root,int level,vector<int>&ans){
-        if(root==NULL) return;
+    bool isSubsequence(string s, string t) {
+        int i = 0, j = 0;
 
-        if(level==ans.size()){
-            ans.push_back(root->val);
-        } 
-        rightSide(root->right,level+1,ans);
-        rightSide(root->left,level+1,ans);
-    }
-    vector<int> rightSideView(TreeNode* root) {
-        vector<int>ans;
-        rightSide(root,0,ans);
-        return ans;
+        while (i < s.size() && j < t.size()) {
+            if (s[i] == t[j]) {
+                i++;
+            }
+            j++;
+        }
+
+        return i == s.size();
     }
 };

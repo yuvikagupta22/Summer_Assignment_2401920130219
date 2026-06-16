@@ -1,25 +1,14 @@
-QUE- https://leetcode.com/problems/valid-anagram/description/
-
 class Solution {
 public:
-    bool isAnagram(string s, string t) {
-        if (s.length() != t.length()) {
-            return false;
-        }
-
-        unordered_map<char, int> counter;
-
-        for (char ch : s) {
-            counter[ch] = counter[ch] + 1;
-        }
-
-        for (char ch : t) {
-            if (counter.find(ch) == counter.end() || counter[ch] == 0) {
-                return false;
+    int maxProfit(vector<int>& prices) {
+        int maxProfit=0;
+        int bestBuy=prices[0];   
+        for(int i=0;i<prices.size();i++){
+            if(prices[i]>bestBuy){
+                maxProfit=max(maxProfit,prices[i]-bestBuy);
             }
-            counter[ch] = counter[ch] - 1;
+            bestBuy=min(prices[i],bestBuy);
         }
-
-        return true;        
+        return maxProfit;
     }
 };
